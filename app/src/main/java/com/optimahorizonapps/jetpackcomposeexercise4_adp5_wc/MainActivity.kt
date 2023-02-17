@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BusinessCardScreen() {
-    val image = painterResource(R.drawable.android_pic)
+    val image = painterResource(R.drawable.donald_duck_pic)
     Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -67,7 +67,7 @@ fun BusinessCardScreen() {
             horizontalAlignment = Alignment.CenterHorizontally) {
             
             Row {
-                Icon(painter = , contentDescription = )
+
             }
         }
 
