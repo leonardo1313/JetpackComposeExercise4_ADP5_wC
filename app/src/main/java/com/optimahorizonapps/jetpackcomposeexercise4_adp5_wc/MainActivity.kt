@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
+                    BusinessCard()
                 }
             }
         }
@@ -37,16 +37,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun BusinessCardScreen() {
+fun BusinessCardTop(modifier: Modifier) {
     val image = painterResource(R.drawable.donald_duck_pic)
-    Column(
-        Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally)
-    {
+
         Column(
-            Modifier.fillMaxSize(1f),
-            verticalArrangement = Arrangement.Center,
+            Modifier
+                .fillMaxSize(0.5f),
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
                 painter = image,
@@ -61,23 +58,104 @@ fun BusinessCardScreen() {
             Text(
                 text = "Professional cartoon actor")
         }
-        Column(
-            Modifier.fillMaxSize(1f),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
-            
-            Row {
+}
 
-            }
+@Composable
+fun BusinessCardBottom(modifier: Modifier) {
+    val homeIcon = painterResource(R.drawable.ic_baseline_home_24)
+    val phoneIcon = painterResource(R.drawable.ic_baseline_phone_24)
+    val emailIcon = painterResource(R.drawable.ic_baseline_mail_outline_24)
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(0.dp, 0.dp, 0.dp, 30.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Bottom) {
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(30.dp, 2.dp, 20.dp, 2.dp)
+        ) {
+            Icon(
+                painter = phoneIcon,
+                contentDescription = "Phone number",
+                modifier = Modifier
+                    .padding(5.dp)
+                    .wrapContentWidth(Alignment.Start)
+            )
+            Text(
+                text = "003851234567",
+                modifier = Modifier
+                    .padding(10.dp, 0.dp, 10.dp, 0.dp)
+                    .align(Alignment.CenterVertically)
+                    .fillMaxWidth()
+                    .wrapContentWidth(Alignment.End)
+            )
         }
-
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(30.dp, 2.dp, 20.dp, 2.dp)
+        ) {
+            Icon(
+                painter = emailIcon,
+                contentDescription = "Email address",
+                modifier = Modifier
+                    .padding(5.dp)
+                    .wrapContentWidth(Alignment.Start)
+            )
+            Text(
+                text = "donaldduck@somemail.dom",
+                modifier = Modifier
+                    .padding(10.dp, 0.dp, 10.dp, 0.dp)
+                    .align(Alignment.CenterVertically)
+                    .fillMaxWidth()
+                    .wrapContentWidth(Alignment.End)
+            )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(30.dp, 2.dp, 20.dp, 2.dp)
+        ) {
+            Icon(
+                painter = homeIcon,
+                contentDescription = "Home address",
+                modifier = Modifier
+                    .padding(5.dp)
+                    .wrapContentWidth(Alignment.Start)
+            )
+            Text(
+                text = "Bugs Bunny Street 15, Disneyland",
+                modifier = Modifier
+                    .padding(10.dp, 0.dp, 10.dp, 0.dp)
+                    .align(Alignment.CenterVertically)
+                    .fillMaxWidth()
+                    .wrapContentWidth(Alignment.End)
+            )
+        }
     }
+}
+
+@Composable
+fun BusinessCard() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
+
+        BusinessCardTop(modifier = Modifier.weight(3f))
+        BusinessCardBottom(modifier = Modifier.weight(2f))
+    }
+
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     JetpackComposeExercise4_ADP5_wCTheme {
-        BusinessCardScreen()
+        BusinessCard()
     }
 }
